@@ -1,0 +1,1 @@
+Run the following to post-process output files: ./finish.sh run_Wp_M6200_Wm_2 <order>.M6200_Wm_2.dat

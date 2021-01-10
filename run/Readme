@@ -1,0 +1,53 @@
+#2019/01/01
+cd /hcp/data/data02/jelee/FEWZ/FEWZ_3.1.rc/
+$ source setup.sh
+$ cd run/
+$ source runall
+
+<< Calculate NNPDF31_lo_as_0130 , NNPDF31_nnlo_as_0118 Sigma and K-factor >>
+
+main execute file : 
+1. makeinput.sh (wpwidth.exe) 
+
+makeinput.sh mass(TeV) mode(1 W-/ 3 W+) order(0 LO / 2 NNLO)
+ To make input parameter card. control variables : mass mode order PDFset width partial width <-wpwidth.exe
+
+2. condor_run_je.sh (modified)
+condor_run_je.sh -> job.jdl style edit
+
+./condor_run_je.sh w ${RunDir} ${INPUT} ex_histograms_wprime.txt ${OUTPUT} ..
+
+if LO : job # 1
+if NNLO : job #154
+
+3. runall -> all job running at once
+
+source makeinput.sh 2 1 2; cd run_M2000_Wm_2; condor_submit job.jdl; cd -;
+
+4. Check xsec values
+XsecCheck.sh -> LO
+nnloxsecCheck.sh -> NNLO (Total sum of each xsecs(154))
+
+5. Draw Graph
+nnloWpXsec.C
+
+
+## environment setting
+
+export SCRAM_ARCH=slc6_amd64_gcc630
+export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
+source $VO_CMS_SW_DIR/cmsset_default.sh
+cd /hcp/data/data02/jelee/FEWZ/CMSSW_10_1_9
+eval `scramv1 runtime -sh`
+cd -
+export dirLHAPDF=/cvmfs/cms.cern.ch/slc6_amd64_gcc630/external/lhapdf/6.2.1
+export PATH=$dirLHAPDF/bin:$PATH
+export LD_LIBRARY_PATH=$dirLHAPDF/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=$dirLHAPDF/lib/python2.7/site-packages:$PYTHONPATH
+
+
+source makeinput.sh 29 1 0
+mkdir run_M6000_Wm_0; cd run_M6000_Wm_0; ../fewzw -i ../M6000_Wm_0.txt -h ../ex_histograms_wprime.txt -o run_M6000_Wm_0 -p ../.. -s 0 &> screen_6000_10.out  &
+
+NNLO 2.8978097822424534E-005
+

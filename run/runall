@@ -1,0 +1,61 @@
+## source makeinput.sh index(mass) W+ 3/W- 1 LO 0/NNLO 2
+source makeinput.sh 62  1 0; cd run_m6200_wm_0; condor_submit job.jdl; cd -;
+source makeinput.sh 64  1 0; cd run_m6400_wm_0; condor_submit job.jdl; cd -;
+source makeinput.sh 62  3 0; cd run_m6200_wp_0; condor_submit job.jdl; cd -;
+source makeinput.sh 64  3 0; cd run_m6400_wp_0; condor_submit job.jdl; cd -;
+
+source makeinput.sh 62  1 2; cd run_m6200_wm_2; condor_submit job.jdl; cd -;
+source makeinput.sh 64  1 2; cd run_m6400_wm_2; condor_submit job.jdl; cd -;
+source makeinput.sh 62  3 2; cd run_m6200_wp_2; condor_submit job.jdl; cd -;
+source makeinput.sh 64  3 2; cd run_m6400_wp_2; condor_submit job.jdl; cd -;
+
+source makeinput.sh 60  1 0; cd run_m6000_wm_0; condor_submit job.jdl; cd -;
+source makeinput.sh 60  3 0; cd run_m6000_wp_0; condor_submit job.jdl; cd -;
+source makeinput.sh 60  1 2; cd run_m6000_wm_2; condor_submit job.jdl; cd -;
+source makeinput.sh 60  3 2; cd run_m6000_wp_2; condor_submit job.jdl; cd -;
+
+#source makeinput.sh 1  1 2; cd run_M400_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 2  1 2; cd run_M600_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 3  1 2; cd run_M800_Wm_2 condor_submit job.jdl; cd -;
+##source makeinput.sh 4  1 2; cd run_M1000_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 5  1 2; cd run_M1200_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 6  1 2; cd run_M1400_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 7  1 2; cd run_M1600_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 8  1 2; cd run_M1800_Wm_2; condor_submit job.jdl; cd -;
+##source makeinput.sh 9  1 2; cd run_M2000_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 10 1 2; cd run_M2200_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 11 1 2; cd run_M2400_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 12 1 2; cd run_M2600_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 13 1 2; cd run_M2800_Wm_2; condor_submit job.jdl; cd -;
+##source makeinput.sh 14 1 2; cd run_M3000_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 15 1 2; cd run_M3200_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 16 1 2; cd run_M3400_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 17 1 2; cd run_M3600_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 18 1 2; cd run_M3800_Wm_2; condor_submit job.jdl; cd -;
+##source makeinput.sh 19 1 2; cd run_M4000_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 20 1 2; cd run_M4200_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 21 1 2; cd run_M4400_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 22 1 2; cd run_M4600_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 23 1 2; cd run_M4800_Wm_2; condor_submit job.jdl; cd -;
+##source makeinput.sh 24 1 2; cd run_M5000_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 25 1 2; cd run_M5200_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 26 1 2; cd run_M5400_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 27 1 2; cd run_M5600_Wm_2; condor_submit job.jdl; cd -;
+#source makeinput.sh 28 1 2; cd run_M5800_Wm_2; condor_submit job.jdl; cd -;
+
+#source makeinput.sh 1 1 0; cd run_M1000_Wm_0; condor_submit job.jdl; cd -;
+#source makeinput.sh 2 1 0; cd run_M2000_Wm_0; condor_submit job.jdl; cd -;
+#source makeinput.sh 3 1 0; cd run_M3000_Wm_0; condor_submit job.jdl; cd -;
+#source makeinput.sh 4 1 0; cd run_M4000_Wm_0; condor_submit job.jdl; cd -;
+#source makeinput.sh 5 1 0; cd run_M5000_Wm_0; condor_submit job.jdl; cd -;
+#source makeinput.sh 6 1 0; cd run_M6000_Wm_0; condor_submit job.jdl; cd -;
+#####source makeinput.sh 2 3 2; cd run_M2000_Wp_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 3 3 2; cd run_M3000_Wp_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 4 3 2; cd run_M4000_Wp_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 5 3 2; cd run_M5000_Wp_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 6 3 2; cd run_M6000_Wp_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 2 1 2; cd run_M2000_Wm_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 3 1 2; cd run_M3000_Wm_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 4 1 2; cd run_M4000_Wm_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 5 1 2; cd run_M5000_Wm_2; condor_submit job.jdl; cd -;
+###source makeinput.sh 6 1 2; cd run_M6000_Wm_2; condor_submit job.jdl; cd -;

@@ -1,0 +1,10 @@
+executable = condorRun.sh 
+universe = vanilla  
+arguments = $(Process) 
+output   = condorLog/condor_$(Cluster).$(Process).log  
+error    = condorLog/condor_$(Cluster).$(Process).log
+log      = /dev/null
+should_transfer_files = yes
+when_to_transfer_output = ON_EXIT
+getenv = true
+queue 154

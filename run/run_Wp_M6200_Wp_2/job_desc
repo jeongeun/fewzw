@@ -1,0 +1,14 @@
+Executable = condor_fewzw
+Environment = CUBACORES=0
+Universe = standard
+Requirements = Memory >= 128 && Disk >= 5000
+Rank = kflops
+Getenv = True
+Notification = Error
+Output = condor_output.out
+Log = condor_log.log
+Error = condor_error.err
+
+Arguments = -i ../M6200_Wp_2.txt -h ../histo_wprime.txt -o M6200_Wp_2.dat -p ../../. -s $(Process)
+Initialdir = run_Wp_M6200_Wp_2$(Process)
+Queue 154

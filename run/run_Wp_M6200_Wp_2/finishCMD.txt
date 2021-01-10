@@ -1,0 +1,1 @@
+./finish.sh run_Wp_M6200_Wp_2 NNLO.M6200_Wp_2.dat

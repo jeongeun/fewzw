@@ -1,0 +1,72 @@
+ CMS collision Energy =    13000.000000000000     
+ Collider type = pp, W- mode
+ ======================================
+ Factorization scale                =    6200.0000000000000     
+ Renormalization scale              =    6200.0000000000000     
+ ==================================
+ NNLO Cross-Section
+ ======================================
+ Alpha QED                          =    7.8125000000000000E-003
+ ======================================
+ W mass (GeV)                       =    6200.0000000000000     
+ W width (GeV)                      =    220.12799999999999     
+ W->lv partial width                =    18.344000000000001     
+ sin^2(theta)                       =   0.22255000000000000     
+ Vud                                =   0.97428000000000003     
+ Vus=Vcd                            =   0.22530000000000000     
+ Vcs                                =   0.97345000000000004     
+ Vub                                =    3.4700000000000000E-003
+ Vcb                                =    4.1000000000000002E-002
+ ======================================
+ Strong coupling                    =    6.9777939032390948E-002
+ PDF set = NNPDF31_nnlo_as_0118_nf_4                                   
+ ======================================
+ W pole focus ON
+ ======================================
+ Lepton-pair invariant mass minimum =    0.0000000000000000     
+ Lepton-pair invariant mass maximum =    13000.000000000000     
+ Transverse mass minimum            =    0.0000000000000000     
+ Transverse mass maximum            =    13000.000000000000     
+ W pT minimum                       =    0.0000000000000000     
+ W pT maximum                       =    13000.000000000000     
+ W rapidity minimum                 =   -20.000000000000000     
+ W rapidity maximum                 =    20.000000000000000     
+ Charged lepton pT minimum          =    0.0000000000000000     
+ Charged lepton pT maximum          =    13000.000000000000     
+ Missing pT minimum                 =    0.0000000000000000     
+ Missing pT maximum                 =    13000.000000000000     
+ Lepton eta absolute value?         =   T
+ Lepton pseudorapidity minimum      =    0.0000000000000000     
+ Lepton pseudorapidity maximum      =    100.00000000000000     
+ ======================================
+ Jet merging algorithm              =   ktal
+ Jet algorithm cone size (deltaR)   =   0.40000000000000002     
+ parton-parton Rsep (cone algo only)=    1.3000000000000000     
+ Minimum pT for Observable Jets     =    20.000000000000000     
+ Maximum eta for Observable Jets    =    4.5000000000000000     
+ Minimum Number of Jets             =             0
+ Maximum Number of Jets             =             2
+ Leading jet pT minimum             =    0.0000000000000000     
+ ======================================
+ Lep-neutrino deltaPhi minimum      =    0.0000000000000000     
+ Lep-neutrino deltaPhi maximum      =    4.0000000000000000     
+ Lep-Jet deltaR minimum             =    0.0000000000000000     
+ ======================================
+ 
+ ===========   VEGAS PARAMETERS   ========
+ 
+ Maximum number of evaluations      =    200000000
+ Actual number of evaluations       =    202500000
+ Requested relative precision (%)   =    0.0000000000000000     
+ Requested absolute precision       =    0.0000000000000000     
+ Total integration time (sec)       =    3585.0000000000000     
+ Random number seed                 =          678
+ 
+ ===========   RESULT    =================
+ 
+ Sigma (pb)                  =   -1.9387246004391344E-009
+ Error (pb)                  =    1.3913318457733503E-013
+ chi^2/iteration             =   0.24318575103266488     
+ 
+ ===========   HISTOGRAMS    =================
+      bin           weight    numerical error
