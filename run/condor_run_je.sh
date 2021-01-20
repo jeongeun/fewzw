@@ -67,7 +67,7 @@ cat << EOF > condorRun.sh
 export SCRAM_ARCH=slc6_amd64_gcc630
 export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
 source \$VO_CMS_SW_DIR/cmsset_default.sh
-cd /hcp/data/data02/jelee/FEWZ/CMSSW_10_1_9
+cd /cvmfs/cms.cern.ch/slc6_amd64_gcc630/cms/cmssw/CMSSW_10_1_9
 eval \`scramv1 runtime -sh\`
 cd -
 export dirLHAPDF=/cvmfs/cms.cern.ch/slc6_amd64_gcc630/external/lhapdf/6.2.1
@@ -80,26 +80,26 @@ export PYTHONPATH=\$dirLHAPDF/lib/python2.7/site-packages:\$PYTHONPATH
 EOF
 
 numSection=`grep "Queue" job_desc  | awk '{print $2}'`      
-
+### LO case
 if [ ${numSection} == "1" ]; then 
 cat << EOF >> condorRun.sh
 RunIdx=\$1
 
-cd /hcp/data/data02/jelee/FEWZ/FEWZ_3.1.rc/run/${RUNDIR}
-echo "../fewzw -i ../${INFILE} -h ../${HISTFILE} -o ${RUNDIR} -p ../.. -s 0 &> screen.out &"
+cd /hcp/data/data02/jelee/FEWZ/FEWZ_3.1.rc/run/${RUNDIR} ## NB. <- set your rundirectory 
+echo "./fewzw -i ../${INFILE} -h ../${HISTFILE} -o ${RUNDIR} -p ../.. -s 0 &> screen.out &"
 ./fewzw -i ../${INFILE} -h ../${HISTFILE} -o ${RUNDIR} -p ../.. -s 0 &> screen.out
-#echo "STARTTIME `date` ; time ../fewzw  -i  ../${INFILE} -h ../${HISTFILE} -p ../.. -o ${RUNDIR} -s \${1} &> screen.out; echo "ENDTIME `date`";"
 #echo "STARTTIME `date`" ; time ../fewzw  -i  ../${INFILE} -h ../${HISTFILE} -p ../.. -o ${RUNDIR} -s \${1} &> screen.out; echo "ENDTIME `date`";
 #date >> time
 exit
 EOF
 echo "$numSection"; fi
 
+### NNLO case
 if [ ${numSection} == "154" ]; then
 cat << EOF >> condorRun.sh
 RunIdx=\$1
 
-cd /hcp/data/data02/jelee/FEWZ/FEWZ_3.1.rc/run/${RUNDIR}
+cd /hcp/data/data02/jelee/FEWZ/FEWZ_3.1.rc/run/${RUNDIR}  ## NB. <- set your rundirectory 
 if [ "\$RunIdx" == "0" ]; then cd ${RUNDIR}0; echo "STARTTIME `date`" ; time ../fewzw -i ../${INFILE} -h ../${HISTFILE} -o ${RUNDIR}.dat -p ../.. -s 0 &> screen.out; echo "ENDTIME `date`"; fi
 if [ "\$RunIdx" == "1" ]; then cd ${RUNDIR}1; echo "STARTTIME `date`" ; time ../fewzw -i ../${INFILE} -h ../${HISTFILE} -o ${RUNDIR}.dat -p ../.. -s 1 &> screen.out; echo "ENDTIME `date`"; fi
 if [ "\$RunIdx" == "2" ]; then cd ${RUNDIR}2; echo "STARTTIME `date`" ; time ../fewzw -i ../${INFILE} -h ../${HISTFILE} -o ${RUNDIR}.dat -p ../.. -s 2 &> screen.out; echo "ENDTIME `date`"; fi

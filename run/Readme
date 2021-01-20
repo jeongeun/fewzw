@@ -1,53 +1,66 @@
-#2019/01/01
+Main homepage = https://www.hep.anl.gov/fpetriello/FEWZ.html
+
+-- install FEWZ
+wget http://www.hep.anl.gov/fpetriello/FEWZ_3.1.rc.tar.gz
+
+modify makefile to use LHAPDF
+################################
+### Choose whether to use LHAPDF
+### LHAPDF = on,off
+LHAPDF = on
+LHADIR = /cvmfs/cms.cern.ch/slc6_amd64_gcc630/external/lhapdf/6.2.1-omkpbe3/lib 
+#################################
+
+#All makes will compile the necessary CUBA library provided automatically.
+make fewz #makes local executable
+make condor_fewz #makes executable for Condor systems
+
+#or just 
+make #makes both, an error will be thrown if you do not have Condor installed
+
+-- Run FEWZ (please see runall)
+
 cd /hcp/data/data02/jelee/FEWZ/FEWZ_3.1.rc/
-$ source setup.sh
-$ cd run/
-$ source runall
 
-<< Calculate NNPDF31_lo_as_0130 , NNPDF31_nnlo_as_0118 Sigma and K-factor >>
+g++ `root-config --cflags` `root-config --libs` wpwidth.cc -o wpwidth.exe
 
-main execute file : 
-1. makeinput.sh (wpwidth.exe) 
+- main execute file : 
 
-makeinput.sh mass(TeV) mode(1 W-/ 3 W+) order(0 LO / 2 NNLO)
+1. makeinput.sh 
+
+makeinput.sh [mass(TeV)] [mode(1 W-/ 3 W+)] [order(0 LO / 2 NNLO)]
+
+
  To make input parameter card. control variables : mass mode order PDFset width partial width <-wpwidth.exe
 
-2. condor_run_je.sh (modified)
+(ex1) 1000 GeV Wprime- LO cross section
+source makeinput.sh 10 1 0; ls run_M1000_Wm_0
+
+(ex2) 1500 GeV Wprime+ NNLO cross section
+source makeinput.sh 15 3 2; ls run_M1500_Wp_2
+
+
+2. condor_run_je.sh (condor_run.sh was a little modified)
 condor_run_je.sh -> job.jdl style edit
 
 ./condor_run_je.sh w ${RunDir} ${INPUT} ex_histograms_wprime.txt ${OUTPUT} ..
 
-if LO : job # 1
-if NNLO : job #154
+if LO : job # numSection= 1
+if NNLO : job # numSection = 154
 
-3. runall -> all job running at once
 
-source makeinput.sh 2 1 2; cd run_M2000_Wm_2; condor_submit job.jdl; cd -;
+- Running at once : 
 
-4. Check xsec values
+runall -> all job running at once
+
+(ex) 2000 GeV Wprime- NNLO cross section calculation
+source makeinput.sh 20 1 2; cd run_M2000_Wm_2; condor_submit job.jdl; cd -;
+
+- Check xsec values:
+
 XsecCheck.sh -> LO
 nnloxsecCheck.sh -> NNLO (Total sum of each xsecs(154))
 
-5. Draw Graph
+- Draw Graph:
 nnloWpXsec.C
-
-
-## environment setting
-
-export SCRAM_ARCH=slc6_amd64_gcc630
-export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
-source $VO_CMS_SW_DIR/cmsset_default.sh
-cd /hcp/data/data02/jelee/FEWZ/CMSSW_10_1_9
-eval `scramv1 runtime -sh`
-cd -
-export dirLHAPDF=/cvmfs/cms.cern.ch/slc6_amd64_gcc630/external/lhapdf/6.2.1
-export PATH=$dirLHAPDF/bin:$PATH
-export LD_LIBRARY_PATH=$dirLHAPDF/lib:$LD_LIBRARY_PATH
-export PYTHONPATH=$dirLHAPDF/lib/python2.7/site-packages:$PYTHONPATH
-
-
-source makeinput.sh 29 1 0
-mkdir run_M6000_Wm_0; cd run_M6000_Wm_0; ../fewzw -i ../M6000_Wm_0.txt -h ../ex_histograms_wprime.txt -o run_M6000_Wm_0 -p ../.. -s 0 &> screen_6000_10.out  &
-
-NNLO 2.8978097822424534E-005
 

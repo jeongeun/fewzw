@@ -6,7 +6,7 @@ TopDir=`pwd`
 export SCRAM_ARCH=slc6_amd64_gcc630
 export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
 source $VO_CMS_SW_DIR/cmsset_default.sh
-cd /hcp/data/data02/jelee/FEWZ/CMSSW_10_1_9
+cd /cvmfs/cms.cern.ch/slc6_amd64_gcc630/cms/cmssw/CMSSW_10_1_9
 eval `scramv1 runtime -sh`
 cd -
 export dirLHAPDF=/cvmfs/cms.cern.ch/slc6_amd64_gcc630/external/lhapdf/6.2.1
@@ -26,11 +26,10 @@ if [ "$Order" == "" ]; then
         exit
 fi
 
-COM="13000d0"
-MASS=`expr ${Index} \* 100 ` #\+ 200`
+COM="14000d0"
+MASS=`expr ${Index} \* 100 `
 Width=`./wpwidth.exe ${MASS} | awk '{print$4}'`
 PartialWidth=`./wpwidth.exe ${MASS} | awk '{print$6}'`
-#MassString=`printf "%04d" $MASS`
 MassString=`printf "%d" $MASS`
 
 PDFs=""
@@ -93,17 +92,17 @@ Vegas Parameters
 'W pole focus (1=Yes, 0=No)     = ' 1
 =============================================
 'Lepton-pair invariant mass minimum = ' 0d0
-'Lepton-pair invariant mass maximum = ' 13000d0
-'Transverse mass minimum           = ' 0d0
-'Transverse mass maximum           = ' 13000d0
+'Lepton-pair invariant mass maximum = ' ${COM}d0
+'Transverse mass minimum            = ' 0d0
+'Transverse mass maximum            = ' ${COM}d0
 'W pT minimum                       = ' 0d0
-'W pT maximum                       = ' 13000d0
+'W pT maximum                       = ' ${COM}d0
 'W rapidity minimum                 = ' -20d0
 'W rapidity maximum                 = ' 20d0
 'Charged lepton pT minimum          = ' 0d0
-'Charged lepton pT maximum          = ' 13000d0
+'Charged lepton pT maximum          = ' ${COM}d0
 'Missing pT minimum                 = ' 0d0
-'Missing pT maximum                 = ' 13000d0
+'Missing pT maximum                 = ' ${COM}d0
 'pT min for softer lepton           = ' 0d0
 'pT max for softer lepton           = ' 7000d0
 'pT min for harder lepton           = ' 0d0
@@ -139,14 +138,13 @@ ISOLATION CUTS-------------------------------
 =============================================
 EOF
 
-#echo "mkdir ${RunDir}; cd ${RunDir}; ../fewzw -i ../${INPUT} -h ../ex_histograms_wprime.txt -o ${RunDir} -p ../.. -s 0 &> screen_${MASS}_${Mode}${Order}.out  &"
-#echo "cd - " 
+echo "mkdir ${RunDir}; cd ${RunDir}; ../fewzw -i ../${INPUT} -h ../histograms.txt -o ${RunDir} -p ../.. -s 0 &> screen_${MASS}_${Mode}${Order}.out  &"
+echo "cd - " 
 echo "########################################-----------------"
-#echo "./condor_run_je.sh w ${RunDir} ${INPUT} ex_histograms_wprime.txt ${OUTPUT} . "
-#echo "########################################-----------------"
-./condor_run_je.sh w ${RunDir} ${INPUT} histo_wprime.txt ${OUTPUT} . 
-#echo "./local_run.sh w ${RunDir} ${INPUT} ex_histograms_wprime.txt ${OUTPUT} . "
-#./local_run.sh w ${RunDir} ${INPUT} ex_histograms_wprime.txt ${OUTPUT} . 
+echo "./condor_run_je.sh w ${RunDir} ${INPUT} histograms.txt ${OUTPUT} . "
+./condor_run_je.sh w ${RunDir} ${INPUT} histograms.txt ${OUTPUT} . 
+#echo "./local_run.sh w ${RunDir} ${INPUT} histograms.txt ${OUTPUT} . "
+#./local_run.sh w ${RunDir} ${INPUT} histograms.txt ${OUTPUT} . 
 echo "./finish.sh ${RunDir} ${OrderString}.${OUTPUT}" > ${RunDir}/finishCMD.txt
 cat ${RunDir}/finishCMD.txt
 

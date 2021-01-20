@@ -1,18 +1,18 @@
 ## source makeinput.sh index(mass) W+ 3/W- 1 LO 0/NNLO 2
-source makeinput.sh 62  1 0; cd run_m6200_wm_0; condor_submit job.jdl; cd -;
-source makeinput.sh 64  1 0; cd run_m6400_wm_0; condor_submit job.jdl; cd -;
-source makeinput.sh 62  3 0; cd run_m6200_wp_0; condor_submit job.jdl; cd -;
-source makeinput.sh 64  3 0; cd run_m6400_wp_0; condor_submit job.jdl; cd -;
+source makeinput.sh 62  1 0; cd run_M6200_Wm_0; condor_submit job.jdl; cd -;
+source makeinput.sh 64  1 0; cd run_M6400_Wm_0; condor_submit job.jdl; cd -;
+source makeinput.sh 62  3 0; cd run_M6200_Wp_0; condor_submit job.jdl; cd -;
+source makeinput.sh 64  3 0; cd run_M6400_Wp_0; condor_submit job.jdl; cd -;
 
-source makeinput.sh 62  1 2; cd run_m6200_wm_2; condor_submit job.jdl; cd -;
-source makeinput.sh 64  1 2; cd run_m6400_wm_2; condor_submit job.jdl; cd -;
-source makeinput.sh 62  3 2; cd run_m6200_wp_2; condor_submit job.jdl; cd -;
-source makeinput.sh 64  3 2; cd run_m6400_wp_2; condor_submit job.jdl; cd -;
+source makeinput.sh 62  1 2; cd run_M6200_Wm_2; condor_submit job.jdl; cd -;
+source makeinput.sh 64  1 2; cd run_M6400_Wm_2; condor_submit job.jdl; cd -;
+source makeinput.sh 62  3 2; cd run_M6200_Wp_2; condor_submit job.jdl; cd -;
+source makeinput.sh 64  3 2; cd run_M6400_Wp_2; condor_submit job.jdl; cd -;
 
-source makeinput.sh 60  1 0; cd run_m6000_wm_0; condor_submit job.jdl; cd -;
-source makeinput.sh 60  3 0; cd run_m6000_wp_0; condor_submit job.jdl; cd -;
-source makeinput.sh 60  1 2; cd run_m6000_wm_2; condor_submit job.jdl; cd -;
-source makeinput.sh 60  3 2; cd run_m6000_wp_2; condor_submit job.jdl; cd -;
+source makeinput.sh 60  1 0; cd run_M6000_Wm_0; condor_submit job.jdl; cd -;
+source makeinput.sh 60  3 0; cd run_M6000_Wp_0; condor_submit job.jdl; cd -;
+source makeinput.sh 60  1 2; cd run_M6000_Wm_2; condor_submit job.jdl; cd -;
+source makeinput.sh 60  3 2; cd run_M6000_Wp_2; condor_submit job.jdl; cd -;
 
 #source makeinput.sh 1  1 2; cd run_M400_Wm_2; condor_submit job.jdl; cd -;
 #source makeinput.sh 2  1 2; cd run_M600_Wm_2; condor_submit job.jdl; cd -;
